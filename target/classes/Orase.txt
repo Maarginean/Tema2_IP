@@ -1,0 +1,5 @@
+ID      Name   Short
+819827 Razvilka Rusia
+524901 Moscow Rusia
+2973393 Tarascon Franta
+2986678 Ploufragan Franta
