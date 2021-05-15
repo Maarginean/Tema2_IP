@@ -2,11 +2,9 @@ package ro.mta.se.lab.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -21,7 +19,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -86,9 +83,10 @@ public class WeatherController implements Initializable {
     public void getId_city(){
         if(C_city.getValue()!=null){
             for(Country i: info.getCountries()){
-                if(i.getCountry()==C_country.getValue()){
+                if(i.getCountry().equals(C_country.getValue())){
                     for(City j:i.getCities()){
-                        currentID=j.getId();
+                        if(j.getName().equals(C_city.getValue()))
+                            currentID=j.getId();
                     }
                 }
             }
@@ -122,8 +120,9 @@ public class WeatherController implements Initializable {
      */
     public void weather(String ID) throws IOException, ParseException {
         try {
+            //System.out.print(ID);
             JSONParser jsonParser = new JSONParser();
-            URL url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + currentID + "&appid=2cc581a29bcd6acca6944407f242a896");
+            URL url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + ID + "&appid=2cc581a29bcd6acca6944407f242a896");
             URLConnection connection = url.openConnection();
             BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(connection.getInputStream()));
             JSONObject jsonObject = (JSONObject) jsonParser.parse(bufferedReader);
