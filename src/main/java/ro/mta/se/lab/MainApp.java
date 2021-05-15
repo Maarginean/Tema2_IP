@@ -12,11 +12,19 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * Clasa Main are functionalitatea de a porni programul.
+ * @author Marginean Florin
+ */
 public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * @param primaryStage definieste un container top level ce contine toate obiectele
+     *                     necesare interfetei grafice.
+     */
     public void start(Stage primaryStage) throws MalformedURLException {
         FXMLLoader loader = new FXMLLoader(new File("D:\\Anul IV semestru II\\WeatherApp\\src\\main\\resources\\view\\WeatherView.fxml").toURI().toURL());
         try {

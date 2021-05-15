@@ -24,23 +24,43 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Contime metodele necesare conectarii cu fisierul fxml si conectarea cu API-ul OpenWeatherMap
+ * @author Marginean Florin
+ */
 public class WeatherController implements Initializable {
 
+    /**
+     * @param info contine informatiile extrase din fisierul de configurare.
+     */
     private WeatherInfo info;
+
     private ObservableList<String> countryList= FXCollections.observableArrayList();
+
+    /**
+     * @param curentID contine Id-ul orasului selectate.
+     */
     private String currentID=null;
 
+    /**
+     * Constructor
+     * @param info
+     */
     public WeatherController(WeatherInfo info) {
         this.info = info;
     }
+
+    /**
+     * Constructor
+     */
     public WeatherController() {
         this.info = null;
     }
+
     @FXML
     public ComboBox<String> C_country;
     @FXML
     public ComboBox<String> C_city;
-
     @FXML
     public TextField info1,info2,info3,info4,info5;
 
@@ -59,6 +79,9 @@ public class WeatherController implements Initializable {
         }
     }
 
+    /**
+     * getId_city afla Id-ul orasului daca este selectat ceva in ComboBox-uri.
+     */
     @FXML
     public void getId_city(){
         if(C_city.getValue()!=null){
@@ -72,6 +95,9 @@ public class WeatherController implements Initializable {
         }
     }
 
+    /**
+     * show_weather apeleaza functia de obtinere a vremii daca este selectat ceva in ComboBox-uri.
+     */
     @FXML
     public void show_weather() throws IOException, ParseException {
         if(currentID!=null){
@@ -90,6 +116,10 @@ public class WeatherController implements Initializable {
         }
     }
 
+    /**
+     * weather foloseste API-ul OpenWeatherMap pentru a obtine un Buffer formatat JSON.
+     * Obiectele sunt preluate din JSON si afisate in mai multe TextField-uri.
+     */
     public void weather(String ID) throws IOException, ParseException {
         try {
             JSONParser jsonParser = new JSONParser();

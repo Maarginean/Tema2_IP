@@ -5,17 +5,26 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Stocheaza datele din fisierul de configurare.
+ * @author Marginean Florin
+ */
 public class WeatherInfo {
+
+    /**
+     * @param countries stocheaza o lista cu tarile din fisierul initial.
+     */
     private ArrayList<Country> countries;
 
-    public WeatherInfo() {
-        countries=new ArrayList<>();
-    }
+    /**
+     * Getters
+     */
+    public ArrayList<Country> getCountries() { return countries; }
 
-    public ArrayList<Country> getCountries() {
-        return countries;
-    }
-
+    /**
+     * readFile citeste tot fisierul de initializare si adauga in lista de Country toate tarile cu orasele ei.
+     * @param path calea definita catre fisierul de configurare.
+     */
     public void readFile(String path){
 
         try {
@@ -45,5 +54,12 @@ public class WeatherInfo {
             System.out.println("Error at opening file");
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Constructor
+     */
+    public WeatherInfo() {
+        countries=new ArrayList<>();
     }
 }

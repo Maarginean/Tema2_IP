@@ -9,7 +9,7 @@
          <children>
             <ComboBox fx:id="C_country" layoutX="49.0" layoutY="67.0" onAction="#show_country" prefWidth="150.0" />
             <ComboBox fx:id="C_city" layoutX="247.0" layoutY="67.0" onAction="#getId_city" prefWidth="150.0" />
-            <Button layoutX="72.0" layoutY="114.0" mnemonicParsing="false" onAction="#show_weather" prefHeight="25.0" prefWidth="90.0" text="See Weather" />
+            <Button fx:id="button" layoutX="72.0" layoutY="114.0" mnemonicParsing="false" onAction="#show_weather" prefHeight="25.0" prefWidth="90.0" text="See Weather" />
             <TextField fx:id="info1" layoutX="50.0" layoutY="171.0" prefHeight="25.0" prefWidth="217.0" />
             <TextField fx:id="info2" layoutX="50.0" layoutY="205.0" prefHeight="25.0" prefWidth="217.0" />
             <TextField fx:id="info3" layoutX="50.0" layoutY="241.0" prefHeight="25.0" prefWidth="217.0" />
